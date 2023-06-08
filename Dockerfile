@@ -15,17 +15,19 @@ COPY Cargo.toml Cargo.lock /app/api/
 
 WORKDIR /app/api/
 
-# 加速下载
+# # 加速下载
 RUN cargo build --release
 
-# 
+#  
 COPY src /app/api/src/
 
+
 # 编译使用upx压缩
-RUN RUST_BACKTRACE=1 cargo build --release && upx /app/api/target/release/app-api
+RUN RUST_BACKTRACE=1 cargo build --release  && upx /app/api/target/release/app-api
 
 # 运行 scratch ,busybox
-FROM --platform=$TARGETPLATFORM scratch as runtime
+FROM --platform=$TARGETPLATFORM busybox as runtime
+
 
 WORKDIR /app/api/
 
