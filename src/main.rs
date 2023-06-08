@@ -9,7 +9,7 @@ async fn index() -> impl Responder {
 
 #[actix_web::main]
 async fn main() -> Result<()> {
-    println!("start server...");
+    println!("start server1...");
     let _ = HttpServer::new(move || {
         let json_config = web::JsonConfig::default()
             .limit(4096)

@@ -1,5 +1,5 @@
 # 编译
-FROM --platform=$TARGETPLATFORM rust:1.70.0-alpine3.18 as builder
+FROM --platform=$TARGETPLATFORM rust:1.70.0 as builder
 
 WORKDIR /app
 
@@ -15,8 +15,8 @@ COPY Cargo.toml Cargo.lock /app/api/
 
 WORKDIR /app/api/
 
-# # 加速下载
-# RUN cargo build --release
+# 加速下载
+RUN cargo build --release
 
 #  
 COPY src /app/api/src/
