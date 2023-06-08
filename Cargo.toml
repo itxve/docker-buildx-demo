@@ -1,0 +1,26 @@
+[package]
+name = "app-api"
+version = "0.2.0"
+edition = "2021"
+
+[registries.crates-io]
+protocol = "sparse"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde = {version = "1.0.148", features = ["derive"]}
+serde_json = {version = "1.0.89", default-features = false, features = ["alloc"]}
+tokio = { version = "1.21.2", default-features = false, features = ["macros", "rt-multi-thread"] }
+actix-web = "4"
+anyhow = {version="1.0.66"}
+reqwest = {version="0.11.12", default-features=false, features = ["json", "rustls-tls"]}
+rand={version="0.8.5"}
+
+
+[profile.release]
+lto = true
+opt-level="z"
+codegen-units = 1
+panic = "abort"
+strip = true
