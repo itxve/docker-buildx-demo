@@ -1,5 +1,5 @@
 # 编译
-FROM --platform=$TARGETPLATFORM rust:1.70.0-alpine3.17 as builder
+FROM --platform=$TARGETPLATFORM rust:1.70.0-alpine3.18 as builder
 
 WORKDIR /app
 
