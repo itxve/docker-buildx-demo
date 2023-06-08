@@ -16,12 +16,10 @@ COPY Cargo.toml Cargo.lock /app/api/
 WORKDIR /app/api/
 
 # # 加速下载
-RUN cargo build --release
+# RUN cargo build --release
 
 #  
 COPY src /app/api/src/
-
-RUN rm -rf /app/api/target/release/app-api 
 
 # 编译使用upx压缩
 RUN RUST_BACKTRACE=1 cargo build --release && upx /app/api/target/release/app-api
