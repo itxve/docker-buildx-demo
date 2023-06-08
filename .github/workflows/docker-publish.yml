@@ -6,7 +6,7 @@ on:
 
 env:
   REGISTRY: docker.io
-  REGISTRY_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/rust-buildx-demo
+  REGISTRY_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/rust-buildx-demo:${{github.ref }}
 
 jobs:
   build:
