@@ -14,16 +14,15 @@ RUN echo -e "[source.crates-io]\nreplace-with = 'rsproxy'\n[source.rsproxy]\nreg
 COPY Cargo.toml Cargo.lock /app/api/
 
 WORKDIR /app/api/
-# 缓存依赖 
-RUN rustup toolchain install nightly
+
 # 加速下载
-RUN cargo +nightly build --release -Z sparse-registry
+RUN cargo build --release
 
 # 
 COPY src /app/api/src/
 
 # 编译使用upx压缩
-RUN RUST_BACKTRACE=1 cargo +nightly build --release -Z sparse-registry && upx /app/api/target/release/app-api
+RUN RUST_BACKTRACE=1 cargo build --release && upx /app/api/target/release/app-api
 
 # 运行 scratch ,busybox
 FROM --platform=$TARGETPLATFORM scratch as runtime
