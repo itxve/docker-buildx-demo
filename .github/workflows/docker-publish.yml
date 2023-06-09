@@ -15,9 +15,11 @@ jobs:
       fail-fast: false
       matrix:
         platform:
+          - linux/386
           - linux/amd64
-          # - linux/arm64/v8
-    steps:
+          - linux/arm/v7
+          - linux/arm64/v8
+ss    steps:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Docker meta
