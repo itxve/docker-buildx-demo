@@ -4,12 +4,12 @@ use serde_json::json;
 
 #[get("/")]
 async fn index() -> impl Responder {
-    HttpResponse::Ok().body("ok1!")
+    HttpResponse::Ok().body("ok")
 }
 
 #[actix_web::main]
 async fn main() -> Result<()> {
-    println!("start server1...");
+    println!("start server...");
     let _ = HttpServer::new(move || {
         let json_config = web::JsonConfig::default()
             .limit(4096)
