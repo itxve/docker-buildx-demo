@@ -1,6 +1,10 @@
 # 编译
 FROM --platform=$TARGETPLATFORM rust:1.70.0-alpine3.18 as builder
 
+LABEL org.opencontainers.image.source=https://github.com/itxve/docker-buildx-demo
+LABEL org.opencontainers.image.description="Buildx Demo"
+LABEL org.opencontainers.image.licenses=MIT
+
 WORKDIR /app
 
 # 创建一个空项目
